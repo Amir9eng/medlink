@@ -10,6 +10,8 @@ export type RootStackParamList = {
   PersonalInfo: undefined;
   Success: undefined;
   VerifyEmail: undefined;
+  Symptoms: undefined;
+  Schedule: undefined;
 };
 
 export type NavigationProps = NavigationProp<RootStackParamList>;

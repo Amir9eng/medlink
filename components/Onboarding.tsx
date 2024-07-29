@@ -7,23 +7,31 @@ export default function Onboarding() {
   const navigation = useNavigation<NavigationProps>();
   return (
     <View className="h-screen">
-      <View className="mt-10 bg-[#677CE4] py-3 pb-32">
-        <Image source={require('../assets/arrow-left.png')} className="mt-3" />
+      <View className="pt-10 bg-green-500 py-3 pb-32">
         <Image
-          source={require('../assets/board.png')}
+          source={require('../assets/arrow-left.png')}
+          className="mt-10 ml-5"
+        />
+        <Image
+          source={require('../assets/logo.png')}
           className="mx-auto mt-16"
         />
       </View>
       <View className="pt-28">
         <TouchableOpacity
-          className="bg-[#677CE4] mx-10 py-4 rounded-3xl"
+          className="bg-green-500 mx-10 py-4 rounded-3xl"
           onPress={() => navigation.navigate('Login')}
         >
-          <Text className="text-white text-center">Login as student</Text>
+          <Text className="text-white text-center">Login as a Patient</Text>
         </TouchableOpacity>
-        <TouchableOpacity className="bg-[#677CE4] mx-10 py-4 rounded-3xl mt-5">
-          <Text className="text-white text-center">Login as lecturer</Text>
+
+        <TouchableOpacity
+          className="bg-green-500 mx-10 py-4 rounded-3xl mt-5"
+          onPress={() => navigation.navigate('Login')}
+        >
+          <Text className="text-white text-center">Login as a Doctor</Text>
         </TouchableOpacity>
+
         <View className="flex-row items-center justify-center mt-4">
           <Text className="text-center text-[#8491A4]">
             Don’t have an account?
@@ -32,7 +40,7 @@ export default function Onboarding() {
             className="py-3 rounded-3xl"
             onPress={() => navigation.navigate('Signup')}
           >
-            <Text className="text-[#2683F1] text-center">Sign up</Text>
+            <Text className="text-green-500 text-center">Sign up</Text>
           </TouchableOpacity>
         </View>
       </View>

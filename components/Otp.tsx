@@ -22,11 +22,11 @@ export default function Otp() {
 
   return (
     <View className="h-screen">
-      <View className="mt-10 bg-gray-200 py-3">
+      <View className="pt-10 bg-gray-200 py-3">
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Image
             source={require('../assets/arrow-left-black.png')}
-            className="mt-3 ml-5"
+            className="mt-10 ml-5"
           />
         </TouchableOpacity>
       </View>
@@ -52,7 +52,7 @@ export default function Otp() {
                 key={index}
                 onLayout={getCellOnLayoutHandler(index)}
                 className={`w-12 h-12 border-2 ${
-                  isFocused ? 'border-blue-500' : 'border-gray-300'
+                  isFocused ? 'border-green-500' : 'border-gray-300'
                 } rounded-lg justify-center items-center`}
               >
                 <Text className="text-lg font-bold">
@@ -62,7 +62,7 @@ export default function Otp() {
             )}
           />
           <TouchableOpacity
-            className="bg-[#677CE4] py-4 rounded-3xl mt-16"
+            className="bg-green-500 py-4 rounded-3xl mt-16"
             onPress={() => navigation.navigate('ChangePassword')}
           >
             <Text className="text-white text-center">Set Pin</Text>
