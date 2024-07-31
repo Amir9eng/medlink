@@ -16,6 +16,7 @@ import {
   createUserWithEmailAndPassword,
   fetchSignInMethodsForEmail,
 } from 'firebase/auth';
+import { setUser } from '@/entity/userEntity';
 
 export default function Signup() {
   const navigation = useNavigation<NavigationProps>();
@@ -45,6 +46,11 @@ export default function Signup() {
           signupForm.email,
           signupForm.password
         );
+
+        setUser({
+          firstName: signupForm.firstName,
+          lastName: signupForm.lastName,
+        });
         navigation.navigate('PersonalInfo');
         console.log('response', response);
         Toast.show({

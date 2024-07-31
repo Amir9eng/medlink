@@ -1,3 +1,4 @@
+import { addSchedule } from '@/entity/scheduleEntity';
 import { NavigationProps } from '@/utils/types';
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
@@ -19,6 +20,15 @@ export default function Schedule() {
     '03:00 PM',
     '04:00 PM',
   ];
+
+  const handleSchedule = () => {
+    if (selectedDate && selectedTime) {
+      addSchedule({ date: selectedDate, time: selectedTime });
+      navigator.navigate('Home');
+    } else {
+      alert('Please select both date and time');
+    }
+  };
 
   return (
     <ScrollView className="flex-1 bg-gray-100">
@@ -85,10 +95,7 @@ export default function Schedule() {
 
         <TouchableOpacity
           className="bg-green-500 py-4 rounded-xl shadow-md"
-          onPress={() => {
-            // console.log('Scheduled for:', selectedDate, selectedTime);
-            navigator.navigate('Home');
-          }}
+          onPress={handleSchedule}
         >
           <Text className="text-white text-center font-bold text-lg">
             Schedule Appointment

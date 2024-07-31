@@ -18,10 +18,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.amir9eng.tendex"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "7130c4be-bfa9-4daf-8f3b-16cf8a0d36ca"
+      }
+    },
+    "owner": "amir9eng"
   }
 }

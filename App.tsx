@@ -13,6 +13,7 @@ import Toast from 'react-native-toast-message';
 import VerifyEmail from './components/VerifyEmail';
 import Symptoms from './components/Symptoms';
 import Schedule from './components/Schedule';
+import CallScreen from './components/CallScreen';
 
 export type RootStackParamList = {
   Login: undefined;
@@ -27,6 +28,7 @@ export type RootStackParamList = {
   VerifyEmail: undefined;
   Symptoms: undefined;
   Schedule: undefined;
+  CallScreen: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -53,6 +55,7 @@ export default function App() {
         <Stack.Screen name="VerifyEmail" component={VerifyEmail} />
         <Stack.Screen name="Symptoms" component={Symptoms} />
         <Stack.Screen name="Schedule" component={Schedule} />
+        <Stack.Screen name="CallScreen" component={CallScreen} />
       </Stack.Navigator>
       <Toast />
     </NavigationContainer>

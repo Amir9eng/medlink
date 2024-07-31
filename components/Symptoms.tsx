@@ -9,7 +9,7 @@ const symptoms = [
     id: 1,
     name: 'Blood pressure/Eje ruru',
     description: 'High or low blood pressure',
-    image: require('../assets/malaria.png'),
+    image: require('../assets/blood.jpg'),
   },
   {
     id: 2,
@@ -27,7 +27,7 @@ const symptoms = [
     id: 4,
     name: 'Malaria/iba',
     description: 'Condition caused by plasmodium parasite',
-    image: require('../assets/malaria.png'),
+    image: require('../assets/malaria.jpg'),
   },
   {
     id: 5,
@@ -39,7 +39,7 @@ const symptoms = [
     id: 6,
     name: 'back ache/eyin riro',
     description: 'Pain in the back',
-    image: require('../assets/tapeworm.png'),
+    image: require('../assets/headache.jpg'),
   },
 ];
 
