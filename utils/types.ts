@@ -12,6 +12,7 @@ export type RootStackParamList = {
   VerifyEmail: undefined;
   Symptoms: undefined;
   Schedule: undefined;
+  PatientSignup: undefined;
 };
 
 export type NavigationProps = NavigationProp<RootStackParamList>;

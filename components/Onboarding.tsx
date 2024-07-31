@@ -20,7 +20,7 @@ export default function Onboarding() {
       <View className="pt-28">
         <TouchableOpacity
           className="bg-green-500 mx-10 py-4 rounded-3xl"
-          onPress={() => navigation.navigate('Login')}
+          onPress={() => navigation.navigate('PatientSignup')}
         >
           <Text className="text-white text-center">Login as a Patient</Text>
         </TouchableOpacity>

@@ -98,7 +98,7 @@ export default function Schedule() {
           onPress={handleSchedule}
         >
           <Text className="text-white text-center font-bold text-lg">
-            Schedule Appointment
+            Emu Asiko / Schedule
           </Text>
         </TouchableOpacity>
       </View>

@@ -14,6 +14,7 @@ import VerifyEmail from './components/VerifyEmail';
 import Symptoms from './components/Symptoms';
 import Schedule from './components/Schedule';
 import CallScreen from './components/CallScreen';
+import PatientSignup from './components/PatientSignup';
 
 export type RootStackParamList = {
   Login: undefined;
@@ -29,6 +30,7 @@ export type RootStackParamList = {
   Symptoms: undefined;
   Schedule: undefined;
   CallScreen: undefined;
+  PatientSignup: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -56,6 +58,7 @@ export default function App() {
         <Stack.Screen name="Symptoms" component={Symptoms} />
         <Stack.Screen name="Schedule" component={Schedule} />
         <Stack.Screen name="CallScreen" component={CallScreen} />
+        <Stack.Screen name="PatientSignup" component={PatientSignup} />
       </Stack.Navigator>
       <Toast />
     </NavigationContainer>

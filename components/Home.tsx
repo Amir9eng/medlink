@@ -32,8 +32,7 @@ export default function Home() {
         <View className="flex-1 ml-5">
           <Text className="text-gray-600">Welcome!</Text>
           <Text className="text-2xl font-semibold">
-            {firstName ? firstName : 'Wahab'}{' '}
-            {lastName ? lastName : 'Babatunde'}
+            {firstName ? firstName : 'Default'} {lastName ? lastName : 'User'}
           </Text>
         </View>
         <Image source={require('../assets/notice.png')} />
@@ -61,14 +60,6 @@ export default function Home() {
           </View>
         ))}
 
-        <View className="flex-row mt-5">
-          <View className="bg-blue-500 py-10 px-5 rounded-xl flex-1">
-            <Text className="text-white text-xl">12:00 PM</Text>
-            <Text className="text-white text-2xl font-semibold">
-              Consultation
-            </Text>
-          </View>
-        </View>
         <View className="flex-row mt-5">
           <View className="bg-purple-500 py-10 px-5 rounded-xl flex-1">
             <Text className="text-white text-xl">02:00 PM</Text>

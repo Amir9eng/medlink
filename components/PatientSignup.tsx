@@ -12,18 +12,12 @@ import { useNavigation } from '@react-navigation/native';
 import auth from '../firebase.config';
 import InputField from './input-field';
 import Toast from 'react-native-toast-message';
-import {
-  createUserWithEmailAndPassword,
-  fetchSignInMethodsForEmail,
-} from 'firebase/auth';
 import { setUser, useUser } from '@/entity/userEntity';
 
-export default function Signup() {
+export default function PatientSignup() {
   const navigation = useNavigation<NavigationProps>();
 
   const [signupForm, setSignupForm] = useState({
-    email: '',
-    password: '',
     firstName: '',
     lastName: '',
     phone: '',
@@ -31,28 +25,17 @@ export default function Signup() {
 
   const handleSignUp = async () => {
     try {
-      const signInMethods = await fetchSignInMethodsForEmail(
-        auth,
-        signupForm.email
-      );
-
-      if (signInMethods.length > 0) {
-        alert(
-          'An account with this email address already exists. Please use another email.'
-        );
+      if (!signupForm.firstName || !signupForm.lastName || !signupForm.phone) {
+        Toast.show({
+          type: 'error',
+          text1: 'Fill in all fields',
+        });
       } else {
-        const response = await createUserWithEmailAndPassword(
-          auth,
-          signupForm.email,
-          signupForm.password
-        );
-
         setUser({
           firstName: signupForm.firstName,
           lastName: signupForm.lastName,
         });
-        navigation.navigate('PersonalInfo');
-        console.log('response', response);
+        navigation.navigate('Home');
         Toast.show({
           type: 'success',
           text1: 'Your account has been created successfully',
@@ -82,7 +65,7 @@ export default function Signup() {
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Image
             source={require('../assets/arrow-left-black.png')}
-            className="mt-10 ml-5"
+            className="mt-5 ml-5"
           />
         </TouchableOpacity>
       </View>
@@ -94,7 +77,7 @@ export default function Signup() {
         <Text className="pt-4">Enter your correct credentials</Text>
 
         <InputField
-          label="First Name"
+          label="First Name/"
           placeholder="Enter your First Name"
           value={signupForm.firstName}
           onChangeText={(text) => handleInputChange('firstName', text)}
@@ -105,25 +88,14 @@ export default function Signup() {
           value={signupForm.lastName}
           onChangeText={(text) => handleInputChange('lastName', text)}
         />
-        <InputField
-          label="Email"
-          placeholder="Enter your Email"
-          value={signupForm.email}
-          onChangeText={(text) => handleInputChange('email', text)}
-        />
+
         <InputField
           label="Phone"
           placeholder="Enter your Phone Number"
           value={signupForm.phone}
           onChangeText={(text) => handleInputChange('phone', text)}
         />
-        <InputField
-          label="Password"
-          placeholder="Enter your Password"
-          value={signupForm.password}
-          onChangeText={(text) => handleInputChange('password', text)}
-          secureTextEntry
-        />
+
         <View className="mt-5">
           <TouchableOpacity
             className="bg-green-500 py-4 rounded-3xl mx-4"

@@ -4,11 +4,13 @@ import { remoteStorage } from './globalState';
 interface User {
   firstName: string;
   lastName: string;
+  doctor?: boolean;
 }
 
 const defaultUser: User = {
   firstName: '',
   lastName: '',
+  doctor: false,
 };
 
 export const userEntity = entity<User>(defaultUser, [
@@ -31,11 +33,19 @@ export const setLastName = (lastName: string) => {
   userEntity.set((prev) => ({ ...prev, lastName }));
 };
 
+export const setDoctor = (doctor: boolean) => {
+  userEntity.set((prev) => ({
+    ...prev,
+    doctor,
+  }));
+};
+
 export const useUser = () => {
   const user = userEntity.use();
 
   return {
     firstName: user.firstName,
     lastName: user.lastName,
+    doctor: user.doctor,
   };
 };
