@@ -6,20 +6,46 @@ import {
   ScrollView,
   SafeAreaView,
 } from 'react-native';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { NavigationProps } from '@/utils/types';
 import { useUser } from '@/entity/userEntity';
 import { useSchedule } from '@/entity/scheduleEntity';
+import { Audio } from 'expo-av';
 
 export default function Home() {
   const navigation = useNavigation<NavigationProps>();
   const { firstName, lastName } = useUser();
+  const [sound, setSound] = useState<Audio.Sound | null>(null);
+  const [audioPlayed, setAudioPlayed] = useState(false);
   const schedules = useSchedule();
 
-  const handleAddSymptoms = () => {
-    navigation.navigate('Symptoms');
+  const playSound = async () => {
+    const { sound } = await Audio.Sound.createAsync(
+      require('../assets/sounds/symptoms.mp3')
+    );
+    setSound(sound);
+
+    await sound.playAsync();
   };
+
+  const handleAddSymptoms = async () => {
+    if (!audioPlayed) {
+      await playSound();
+      setAudioPlayed(true);
+    } else {
+      navigation.navigate('Symptoms');
+      setAudioPlayed(false);
+    }
+  };
+
+  useEffect(() => {
+    return sound
+      ? () => {
+          sound.unloadAsync();
+        }
+      : undefined;
+  }, [sound]);
 
   const handleAddSchedule = () => {
     navigation.navigate('Schedule');
@@ -74,7 +100,7 @@ export default function Home() {
         >
           <View className="flex-row items-center justify-center">
             <Text className="text-white text-xl font-semibold mr-2">
-              Add Symptoms
+              {audioPlayed ? 'Proceed to Add Symptoms' : 'Add Symptoms'}
             </Text>
             <Text className="text-white text-2xl">+</Text>
           </View>

@@ -77,7 +77,7 @@ export default function PatientSignup() {
         <Text className="pt-4">Enter your correct credentials</Text>
 
         <InputField
-          label="First Name/"
+          label="First Name"
           placeholder="Enter your First Name"
           value={signupForm.firstName}
           onChangeText={(text) => handleInputChange('firstName', text)}

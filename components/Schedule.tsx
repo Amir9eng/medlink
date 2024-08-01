@@ -24,7 +24,7 @@ export default function Schedule() {
   const handleSchedule = () => {
     if (selectedDate && selectedTime) {
       addSchedule({ date: selectedDate, time: selectedTime });
-      navigator.navigate('Home');
+      navigator.navigate('CallScreen');
     } else {
       alert('Please select both date and time');
     }
