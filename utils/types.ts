@@ -14,6 +14,7 @@ export type RootStackParamList = {
   Schedule: undefined;
   CallScreen: undefined;
   PatientSignup: undefined;
+  VideoCallScreen: undefined;
 };
 
 export type NavigationProps = NavigationProp<RootStackParamList>;

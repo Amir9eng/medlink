@@ -110,7 +110,7 @@ export default function Symptoms() {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 80 }}
       >
-        <View className="flex-row flex-wrap justify-between">
+        <TouchableOpacity className="flex-row flex-wrap justify-between">
           {symptoms.map((symptom) => (
             <SymptomCard
               key={symptom.id}
@@ -119,7 +119,7 @@ export default function Symptoms() {
               onSelect={handleSymptomSelect}
             />
           ))}
-        </View>
+        </TouchableOpacity>
       </ScrollView>
       <View className="absolute bottom-6 left-6 right-6">
         <TouchableOpacity

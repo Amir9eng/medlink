@@ -1,5 +1,7 @@
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import React from 'react';
+import { NavigationProps } from '@/utils/types';
+import { useNavigation } from '@react-navigation/native';
 
 export default function SymptomCard({
   id,
@@ -16,12 +18,15 @@ export default function SymptomCard({
   isSelected: boolean;
   onSelect: (id: number) => void;
 }) {
+  const handlePress = () => {
+    onSelect(id);
+  };
   return (
     <TouchableOpacity
       className={`bg-white rounded-xl shadow-md p-4 mb-4 w-[48%] ${
         isSelected ? 'border-2 border-blue-500' : ''
       }`}
-      onPress={() => onSelect(id)}
+      onPress={handlePress}
     >
       <Image
         source={image}

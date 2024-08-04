@@ -12,6 +12,7 @@ import { NavigationProps } from '@/utils/types';
 import { useUser } from '@/entity/userEntity';
 import { useSchedule } from '@/entity/scheduleEntity';
 import { Audio } from 'expo-av';
+import { clearSchedule } from '@/entity/scheduleEntity';
 
 export default function Home() {
   const navigation = useNavigation<NavigationProps>();
@@ -51,6 +52,10 @@ export default function Home() {
     navigation.navigate('Schedule');
   };
 
+  const handleClearSchedule = () => {
+    clearSchedule();
+  };
+
   return (
     <SafeAreaView className="flex-1 bg-gray-100">
       <View className="pt-12 flex-row px-5">
@@ -71,7 +76,11 @@ export default function Home() {
         <Text className="text-2xl font-bold mb-5 mt-10">Today's Schedule</Text>
 
         {schedules.map((schedule, index) => (
-          <View key={index} className="flex-row mt-5">
+          <TouchableOpacity
+            key={index}
+            className="flex-row mt-5"
+            onPress={() => navigation.navigate('VideoCallScreen')}
+          >
             <View
               className={`bg-${
                 index % 2 === 0 ? 'blue' : 'purple'
@@ -83,7 +92,7 @@ export default function Home() {
               </Text>
               <Text className="text-white text-sm">{schedule.date}</Text>
             </View>
-          </View>
+          </TouchableOpacity>
         ))}
 
         <View className="flex-row mt-5">
@@ -105,17 +114,29 @@ export default function Home() {
             <Text className="text-white text-2xl">+</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity
-          className="bg-green-600 mt-4 py-4 px-6 rounded-xl shadow-md"
-          onPress={handleAddSchedule}
-        >
-          <View className="flex-row items-center justify-center">
-            <Text className="text-white text-xl font-semibold mr-2">
-              Add Schedule
-            </Text>
-            <Text className="text-white text-2xl">+</Text>
-          </View>
-        </TouchableOpacity>
+        <View className="flex-row gap-x-2">
+          <TouchableOpacity
+            className="bg-green-600 mt-4 py-4 px-4 rounded-xl shadow-md"
+            onPress={handleAddSchedule}
+          >
+            <View className="flex-row items-center justify-center">
+              <Text className="text-white text-xl font-semibold mr-2">
+                Add Schedule
+              </Text>
+              <Text className="text-white text-2xl">+</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity
+            className="bg-red-600 mt-4 py-4 px-4 rounded-xl shadow-md"
+            onPress={handleClearSchedule}
+          >
+            <View className="flex-row items-center justify-center">
+              <Text className="text-white text-xl font-semibold mr-2">
+                Clear Schedule
+              </Text>
+            </View>
+          </TouchableOpacity>
+        </View>
       </View>
     </SafeAreaView>
   );

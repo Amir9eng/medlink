@@ -21,6 +21,10 @@ export const addSchedule = (schedule: Schedule) => {
   scheduleEntity.set((prev) => [...prev, schedule]);
 };
 
+export const clearSchedule = () => {
+  scheduleEntity.set([]);
+};
+
 export const useSchedule = () => {
   return scheduleEntity.use();
 };
