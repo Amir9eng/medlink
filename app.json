@@ -12,7 +12,9 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.amir9eng.tendex",
+      "bitcode": false
     },
     "android": {
       "adaptiveIcon": {
@@ -24,11 +26,32 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "extraMavenRepos": [
+              "../../node_modules/@notifee/react-native/android/libs"
+            ],
+            "minSdkVersion": 24
+          }
+        }
+      ],
+      "@stream-io/video-react-native-sdk",
+      [
+        "@config-plugins/react-native-webrtc",
+        {
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera",
+          "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone"
+        }
+      ]
+    ],
     "extra": {
       "eas": {
-        "projectId": "7130c4be-bfa9-4daf-8f3b-16cf8a0d36ca"
+        "projectId": "e60e1f80-5b2c-402d-9add-6fafa0222762"
       }
     },
-    "owner": "amir9eng"
+    "owner": "olukade"
   }
 }

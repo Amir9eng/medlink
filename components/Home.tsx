@@ -19,7 +19,8 @@ export default function Home() {
   const { firstName, lastName } = useUser();
   const [sound, setSound] = useState<Audio.Sound | null>(null);
   const [audioPlayed, setAudioPlayed] = useState(false);
-  const schedules = useSchedule();
+  const schedules = [{ date: '05/08/2024', time: '2:00pm' }];
+  // const schedules = useSchedule();
 
   const playSound = async () => {
     const { sound } = await Audio.Sound.createAsync(
@@ -86,10 +87,11 @@ export default function Home() {
                 index % 2 === 0 ? 'blue' : 'purple'
               }-500 py-10 px-5 rounded-xl flex-1`}
             >
-              <Text className="text-white text-xl">{schedule.time}</Text>
               <Text className="text-white text-2xl font-semibold">
                 Appointment
               </Text>
+              <Text className="text-white text-xl">Click to join the call</Text>
+              <Text className="text-white text-xl">{schedule.time}</Text>
               <Text className="text-white text-sm">{schedule.date}</Text>
             </View>
           </TouchableOpacity>
